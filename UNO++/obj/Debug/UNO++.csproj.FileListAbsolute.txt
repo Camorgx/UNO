@@ -1,0 +1,55 @@
+D:\VS Files\UNO++\UNO++\bin\Debug\UNO++.exe.config
+D:\VS Files\UNO++\UNO++\bin\Debug\UNO++.exe
+D:\VS Files\UNO++\UNO++\bin\Debug\UNO++.pdb
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO++.csprojAssemblyReference.cache
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO__.mainForm.resources
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO__.Properties.Resources.resources
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO++.csproj.GenerateResource.cache
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO++.csproj.CoreCompileInputs.cache
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO++.exe
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO++.pdb
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO__.About.resources
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO__.Rules.resources
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO__.Playgame.resources
+D:\VS Files\UNO++\UNO++\bin\Debug\UNO++.exe.manifest
+D:\VS Files\UNO++\UNO++\bin\Debug\UNO++.application
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO++.exe.manifest
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO++.application
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO__.PersonnalMessage.resources
+D:\VS Files\UNO++\UNO++\bin\Debug\User.dll
+D:\VS Files\UNO++\UNO++\bin\Debug\User.pdb
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO++.csproj.CopyComplete
+D:\VS Files\UNO++\UNO++\bin\Debug\CardControl.dll
+D:\VS Files\UNO++\UNO++\bin\Debug\CardControl.pdb
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO__.Createroom.resources
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO__.Joinroom.resources
+D:\VS Files\UNO++\UNO++\bin\Debug\Core.dll
+D:\VS Files\UNO++\UNO++\bin\Debug\Core.pdb
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO++.csprojAssemblyReference.cache
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO__.About.resources
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO__.Createroom.resources
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO__.Joinroom.resources
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO__.mainForm.resources
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO__.PersonnalMessage.resources
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO__.Playgame.resources
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO__.Properties.Resources.resources
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO__.Rules.resources
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO++.csproj.GenerateResource.cache
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO++.csproj.CoreCompileInputs.cache
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO++.exe
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO++.pdb
+C:\Users\18213\Desktop\UNO++\UNO++\bin\Debug\UNO++.exe.config
+C:\Users\18213\Desktop\UNO++\UNO++\bin\Debug\UNO++.exe.manifest
+C:\Users\18213\Desktop\UNO++\UNO++\bin\Debug\UNO++.application
+C:\Users\18213\Desktop\UNO++\UNO++\bin\Debug\UNO++.exe
+C:\Users\18213\Desktop\UNO++\UNO++\bin\Debug\UNO++.pdb
+C:\Users\18213\Desktop\UNO++\UNO++\bin\Debug\CardControl.dll
+C:\Users\18213\Desktop\UNO++\UNO++\bin\Debug\Core.dll
+C:\Users\18213\Desktop\UNO++\UNO++\bin\Debug\User.dll
+C:\Users\18213\Desktop\UNO++\UNO++\bin\Debug\CardControl.pdb
+C:\Users\18213\Desktop\UNO++\UNO++\bin\Debug\Core.pdb
+C:\Users\18213\Desktop\UNO++\UNO++\bin\Debug\User.pdb
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO++.exe.manifest
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO++.application
+C:\Users\18213\Desktop\UNO++\UNO++\obj\Debug\UNO++.csproj.CopyComplete
+D:\VS Files\UNO++\UNO++\obj\Debug\UNO__.ColorLIst.resources

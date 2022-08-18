@@ -1,6 +1,0 @@
-D:\VS Files\UNO++\User\bin\Debug\User.dll
-D:\VS Files\UNO++\User\bin\Debug\User.pdb
-D:\VS Files\UNO++\User\obj\Debug\User.csprojAssemblyReference.cache
-D:\VS Files\UNO++\User\obj\Debug\User.csproj.CoreCompileInputs.cache
-D:\VS Files\UNO++\User\obj\Debug\User.dll
-D:\VS Files\UNO++\User\obj\Debug\User.pdb

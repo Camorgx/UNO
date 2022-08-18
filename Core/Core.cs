@@ -2,12 +2,10 @@
 using System.Security.Cryptography;
 using System.Windows.Forms;
 
-namespace GameCore
-{
-    public static class Core
-    {
+namespace GameCore {
+    public static class Core {
         public static bool SinglePlayerMode = false;
-        
+
         public static Card[,] user = new Card[9, 20];//用户最多8人，手牌上限为16； 
         public static Card last_card = new Card(-2);
 
@@ -25,18 +23,14 @@ namespace GameCore
         public static int[] win_rand = new int[9];//记录胜利次序
         public static int outcard = 0;//记录出的牌的序号
 
-        public static void Write_card()
-        {
-            for (int i = 1; i <= n; i++)
-            {
+        public static void Write_card() {
+            for (int i = 1; i <= n; i++) {
                 Console.WriteLine("{0}号玩家：", i);
-                if (win_or_not[i] == "win")
-                {
+                if (win_or_not[i] == "win") {
                     Console.WriteLine("win");
                     continue;
                 }
-                for (int j = 1; j <= user_card_sum[i]; j++)
-                {
+                for (int j = 1; j <= user_card_sum[i]; j++) {
                     Console.WriteLine("{0} {1} {2}", user[i, j].num, user[i, j].attribute, user[i, j].color);
                 }
                 Console.WriteLine();
@@ -52,11 +46,9 @@ namespace GameCore
         }
         public static void step_user(int step)//step表示步数 odk
         {
-            while (step != 0)
-            {
+            while (step != 0) {
                 step--;
-                do
-                {
+                do {
                     order = (order + direct) % n;
                     if (order == 0) order = n;
                 } while (win_or_not[order] == "win");//找到没赢的下step个人
@@ -72,8 +64,7 @@ namespace GameCore
         }
         public static void Delete(int user_num, int out_cardnum)//在user_num号玩家的手牌中删除第out_cardnum张牌 odk
         {
-            for (int i = out_cardnum; i < user_card_sum[user_num]; i++)
-            {
+            for (int i = out_cardnum; i < user_card_sum[user_num]; i++) {
                 user[user_num, i].number = user[user_num, i + 1].number;
                 user[user_num, i].reset_card();
             }
@@ -87,13 +78,11 @@ namespace GameCore
         }
         public static string get_card(int user_num, int get_card_sum)//编号为user_num的玩家摸get_card_sum张牌 odk
         {
-            if (get_card_sum >= get_pile[0].card_sum)
-            {
+            if (get_card_sum >= get_pile[0].card_sum) {
                 return "need to wash";//牌堆已满，需要主机进行洗牌操作并发送牌堆//*
             }//牌不够，洗牌
              // Console.WriteLine(get_pile[0].card_sum);
-            for (int i = get_pile[0].card_sum; i >= get_pile[0].card_sum - get_card_sum + 1; i--)
-            {
+            for (int i = get_pile[0].card_sum; i >= get_pile[0].card_sum - get_card_sum + 1; i--) {
                 user_card_sum[user_num]++;
                 // Console.WriteLine(i);
                 user[user_num, user_card_sum[user_num]].number = get_pile[i].card_num;
@@ -111,13 +100,10 @@ namespace GameCore
             Card t = new Card();
             int Min;//一共108张牌，number最大为108
             int min_num = 0;//记录最小编号牌
-            for (int i = 1; i < user_card_sum[user_num]; i++)
-            {
+            for (int i = 1; i < user_card_sum[user_num]; i++) {
                 Min = 109;
-                for (int j = i; j <= user_card_sum[user_num]; j++)
-                {
-                    if (user[user_num, j].number <= Min)
-                    {
+                for (int j = i; j <= user_card_sum[user_num]; j++) {
+                    if (user[user_num, j].number <= Min) {
                         Min = user[user_num, j].number;
                         min_num = j;
                     }
@@ -130,13 +116,11 @@ namespace GameCore
             if (last_card.num == -2) return true;
             if (plus != 0)//存在牌的叠加
             {
-                if (last_card.attribute == "plus_4")
-                {
+                if (last_card.attribute == "plus_4") {
                     if (owe_card.attribute == "plus_4") return true;
                     return false;
                 }
-                if (last_card.attribute == "plus_2")
-                {
+                if (last_card.attribute == "plus_2") {
                     if (owe_card.attribute == "plus_4") return true;
                     if (owe_card.attribute == "plus_2") return true;
                     return false;
@@ -179,8 +163,7 @@ namespace GameCore
             int[] random_cards = new int[109];
             int Mod = get_pile[0].card_sum;
             int T = 40;//洗牌次数
-            while (T != 0)
-            {
+            while (T != 0) {
                 T--;
                 byte[] randomBytes = new byte[109];
                 RNGCryptoServiceProvider rngServiceProvider = new RNGCryptoServiceProvider();
@@ -188,8 +171,7 @@ namespace GameCore
                 Int32 result = BitConverter.ToInt32(randomBytes, 0);
                 random_cards[1] = randomBytes[1];
                 random_cards[1] = random_cards[1] % Mod + 1;
-                for (int i = 1; i < get_pile[0].card_sum; i++)
-                {
+                for (int i = 1; i < get_pile[0].card_sum; i++) {
                     random_cards[i + 1] = randomBytes[i + 1];
                     random_cards[i + 1] = random_cards[i + 1] % Mod + 1;
                     card_pile y;
@@ -200,22 +182,20 @@ namespace GameCore
         public static void prepare() //初始的准备 odk
         {
             for (int i = 1; i <= 8; i++) win_or_not[i] = "not win";
-          //  for(int j=1;j<=4;j++)
-                for (int i = 1; i <= 108; i++) 
-                    get_pile[i].card_num = i;//初始化抽牌堆
+            //  for(int j=1;j<=4;j++)
+            for (int i = 1; i <= 108; i++)
+                get_pile[i].card_num = i;//初始化抽牌堆
             get_pile[0].card_sum = 108;
             aba_pile[0].card_sum = 0;
             for (int i = 0; i < 9; i++)
                 for (int j = 0; j < 20; j++)
                     user[i, j] = new Card();
         }
-        public static void InitGame(int n)
-        {
+        public static void InitGame(int n) {
             prepare();
             wash_pile();
         }
-        public static string out_change(string str)
-        {
+        public static string out_change(string str) {
             if (str == "figure") return "数字牌";
             if (str == "ban") return "禁牌";
             if (str == "plus_2") return "+2牌";
@@ -229,13 +209,10 @@ namespace GameCore
             if (str == "any_color") return "任何颜色";
             return str;
         }
-        public static bool FindNextUser()
-        {
+        public static bool FindNextUser() {
             int T = 100;
-            while (Convert.ToBoolean(T--))
-            {
-                if (win_man == 1)
-                {
+            while (Convert.ToBoolean(T--)) {
+                if (win_man == 1) {
                     return true;
                 }
                 if (skip)//为禁牌
@@ -248,8 +225,7 @@ namespace GameCore
                 {
                     if (!judge_all(order))//若无牌可出则只能被加牌
                     {
-                        if (get_card(order, plus) == "need to wash")
-                        {
+                        if (get_card(order, plus) == "need to wash") {
                             wash_pile();//需要主机进行洗牌后发送；发送牌堆结构体即可//*
                             aba_pile[0].card_sum = 0;//将弃牌堆清空
                             get_card(order, plus);
@@ -260,8 +236,7 @@ namespace GameCore
                 }
                 if (!judge_all(order))//若无牌可出，则摸一张并跳过出牌
                 {
-                    if (get_card(order, 1) == "need to wash")
-                    {
+                    if (get_card(order, 1) == "need to wash") {
                         wash_pile();//需要主机进行洗牌后发送；发送牌堆结构体即可//*
                         aba_pile[0].card_sum = 0;//将弃牌堆清空
                         get_card(order, 1);

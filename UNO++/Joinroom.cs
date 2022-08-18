@@ -8,14 +8,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using System.Windows.Forms;
 using UserNamespace;
-namespace UNO__
-{
-    public partial class Joinroom : Form
-    {
+namespace UNO__ {
+    public partial class Joinroom : Form {
         List<User> users = new List<User>();
         Socket client = null;
-        void InitClient(int port, string ip = "192.168.43.245")
-        {
+        void InitClient(int port, string ip = "192.168.43.245") {
             client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             EndPoint endPoint = new IPEndPoint(IPAddress.Parse(ip), port);
             client.Connect(endPoint);
@@ -27,53 +24,43 @@ namespace UNO__
         public delegate void CardReceivedDelegate(Communication com);
         CardReceivedDelegate cardReceivedDelegate;
 
-        void CardReCeived(Communication com)
-        {
+        void CardReCeived(Communication com) {
             playgame1.SetLastCard(com.card);
             Core.last_card.number = com.card.number;
             Core.last_card.reset_card();
             Core.Delete(Core.order, com.cardid);
             Core.handle_card();
-            if (Core.top_color == "any_color")
-            {
+            if (Core.top_color == "any_color") {
                 Core.top_color = com.color;
                 playgame1.cardControl17.label2.Text = Core.out_change(com.color);
             }
-            if (Core.FindNextUser())
-            {
+            if (Core.FindNextUser()) {
                 MessageBox.Show($"{users[Core.win_rand[1] - 1].Name} 赢了！", "游戏结束");
                 Application.Exit();
             }
-            else
-            {
+            else {
                 playgame1.SetNameLabel();
                 playgame1.RefreshUsers();
                 playgame1.RefreshCard();
-                if (Core.order == playgame1.userid)
-                {
+                if (Core.order == playgame1.userid) {
                     playgame1.button1.Enabled = true;
                 }
             }
         }
 
-        void ReceiveInfo(object c)
-        {
+        void ReceiveInfo(object c) {
             byte[] b = new byte[10240];
             Socket client = c as Socket;
-            while (true)
-            {
-                try
-                {
+            while (true) {
+                try {
                     client.Receive(b);
                 }
-                catch (Exception)
-                {
+                catch (Exception) {
                     client.Dispose();
                     return;
                 }
                 Communication comm = DeserializeObject(b) as Communication;
-                switch (comm.MsgType)
-                {
+                switch (comm.MsgType) {
                     case msgType.userlist:
                         users = comm.users;
                         break;
@@ -99,16 +86,13 @@ namespace UNO__
 
         Playgame playgame1 = null;
 
-        void ThreadBegin()
-        {
+        void ThreadBegin() {
             MethodInvoker methodInvoker = new MethodInvoker(ShowPlaygameWindow);
             BeginInvoke(methodInvoker);
         }
 
-        void ShowPlaygameWindow()
-        {
-            Playgame playgame = new Playgame
-            {
+        void ShowPlaygameWindow() {
+            Playgame playgame = new Playgame {
                 StartPosition = FormStartPosition.CenterScreen
             };
             playgame1 = playgame;
@@ -122,18 +106,15 @@ namespace UNO__
             playgame.Show();
         }
 
-        void SendCard(Card card, int id, string color, int userid)
-        {
+        void SendCard(Card card, int id, string color, int userid) {
             client.Send(SerializeObject(new Communication(card, id, color, userid)));
         }
 
-        object DeserializeObject(byte[] pBytes)
-        {
+        object DeserializeObject(byte[] pBytes) {
             object newOjb = null;
             if (pBytes == null)
                 return newOjb;
-            MemoryStream memory = new MemoryStream(pBytes)
-            {
+            MemoryStream memory = new MemoryStream(pBytes) {
                 Position = 0
             };
             BinaryFormatter formatter = new BinaryFormatter();
@@ -141,8 +122,7 @@ namespace UNO__
             memory.Close();
             return newOjb;
         }
-        byte[] SerializeObject(object pObj)
-        {
+        byte[] SerializeObject(object pObj) {
             if (pObj == null)
                 return null;
             MemoryStream memory = new MemoryStream();
@@ -155,34 +135,28 @@ namespace UNO__
             return read;
         }
         public User clientuser = null;
-        public Joinroom()
-        {
+        public Joinroom() {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
+        private void button1_Click(object sender, EventArgs e) {
+            try {
                 int port = Convert.ToInt32(textBox2.Text);
                 InitClient(port, textBox1.Text);
                 MessageBox.Show("房间加入成功，请等待房主开始游戏！", "成功");
             }
-            catch (Exception)
-            {
+            catch (Exception) {
                 MessageBox.Show("IP或房间号的格式不正确，请重新输入！", "错误");
                 return;
             }
         }
 
-        private void Joinroom_FormClosed(object sender, FormClosedEventArgs e)
-        {
+        private void Joinroom_FormClosed(object sender, FormClosedEventArgs e) {
             Application.Exit();
         }
 
-        private void Joinroom_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        private void Joinroom_FormClosing(object sender, FormClosingEventArgs e) {
             if (MessageBox.Show("是否确定关闭游戏？", "提示", MessageBoxButtons.YesNo) == DialogResult.No)
                 e.Cancel = true;
         }

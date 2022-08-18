@@ -1,7 +1,6 @@
 ﻿using System;
 
-namespace GameCore
-{
+namespace GameCore {
     [Serializable]
     public struct card_pile//弃牌堆中aba_pile数组，抽牌堆为get_pile
     {
@@ -9,40 +8,33 @@ namespace GameCore
         public int card_sum;//对应牌堆牌数,存在[0].card_sum中
     }
     [Serializable]
-    public class Card
-    {
+    public class Card {
         public int number;//牌总编号
         public string attribute;//属性
         public string color; //颜色
         public int num;//牌上数字
                        // public int N;
-        public int Number
-        {
+        public int Number {
             get { return number; }//调用类中的静态函数确定牌的总编号
             set { number = value; }
         }
-        public string Attribute
-        {
+        public string Attribute {
             get { return attribute; }//调用类中的静态函数确定牌的属性
             set { attribute = value; }
         }
-        public string Color
-        {
+        public string Color {
             get { return color; }//调用类中的静态函数确定牌的属性
             set { color = value; }
         }
-        public int Num
-        {
+        public int Num {
             get { return num; }//调用类中的静态函数确定牌的数字
             set { num = value; }
         }
-        public Card()
-        {
+        public Card() {
         }
 
         public Card(int num) => this.num = num;
-        public string get_attribute()
-        {
+        public string get_attribute() {
             if (number <= 76) return "figure";
             if (number >= 77 && number <= 84) return "plus_2";
             if (number >= 85 && number <= 92) return "reverse";
@@ -51,8 +43,7 @@ namespace GameCore
             if (number >= 105 && number <= 108) return "plus_4";
             return "fuck";//闭合路径
         }
-        public int get_num()
-        {
+        public int get_num() {
             if (number > 76) return -1;
             if (number <= 10) return (number - 1);
             if (number >= 11 && number <= 19) return (number - 10);
@@ -64,8 +55,7 @@ namespace GameCore
             if (number >= 68 && number <= 76) return (number - 67);
             return -2;//闭合路径
         }
-        public string get_color()
-        {
+        public string get_color() {
             if (number <= 19) return "red";
             if (number >= 20 && number <= 38) return "yellow";
             if (number >= 39 && number <= 57) return "blue";
